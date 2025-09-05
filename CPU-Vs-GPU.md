@@ -42,4 +42,18 @@
 
 ##  Quick Takeaway
 - **CPU = few powerful workers** → great for general-purpose, sequential tasks.  
-- **GPU = thousands of smaller workers** → great for parallel, math-heavy tasks.  
+- **GPU = thousands of smaller workers** → great for parallel, math-heavy tasks.
+
+
+
+# CPU vs GPU Components
+
+|  CPU (Central Processing Unit)                           |  GPU (Graphics Processing Unit)                                   |
+|-------------------------------------------------------------|----------------------------------------------------------------------|
+| **Cores** → A few powerful cores (4–64) for sequential tasks | **Streaming Multiprocessors (SMs)** → Groups of cores (NVIDIA term) |
+| **ALU (Arithmetic Logic Unit)** → Arithmetic & logic ops    | **CUDA Cores (Shader Units)** → Thousands of small parallel cores   |
+| **Control Unit (CU)** → Directs instructions                | **Tensor Cores** → Specialized for matrix multiplications (AI/ML)  |
+| **Registers** → Very fast small memory inside CPU           | **RT Cores** → Handle ray tracing in modern GPUs                    |
+| **Cache (L1, L2, L3)** → Stores frequently used data        | **Registers & Shared Memory** → Fast memory inside each SM          |
+| **Clock** → Synchronizes operations (GHz)                   | **Cache & Global VRAM** → High-bandwidth video memory               |
+|                                                             | **Warp Scheduler** → Manages thousands of threads in parallel       |
