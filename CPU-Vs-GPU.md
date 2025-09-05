@@ -2,7 +2,7 @@
 
 ---
 
-## 📦 Key Differences (Side by Side)
+##  Key Differences (Side by Side)
 
 | Feature              | CPU (Central Processing Unit)                           | GPU (Graphics Processing Unit)                         |
 |----------------------|----------------------------------------------------------|--------------------------------------------------------|
@@ -17,14 +17,14 @@
 
 ---
 
-## 🔹 Examples
+## Examples
 
 - **CPU Example:** Intel i9 (24 cores, ~600 GFLOPs)  
 - **GPU Example:** NVIDIA RTX 4090 (16,384 CUDA cores, ~82 TFLOPs)  
 
 ---
 
-## 🌍 Real-World Applications
+## Real-World Applications
 
 ### CPU:
 - Running operating systems  
@@ -40,6 +40,6 @@
 
 ---
 
-## ⚡ Quick Takeaway
+##  Quick Takeaway
 - **CPU = few powerful workers** → great for general-purpose, sequential tasks.  
 - **GPU = thousands of smaller workers** → great for parallel, math-heavy tasks.  
