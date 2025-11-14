@@ -1,3 +1,73 @@
+# Slum
+```txt
+#!/bin/bash
+#SBATCH -J imageCNN               # Job name
+#SBATCH -o image_run_%j.out       # Standard output file (%j = job ID)
+#SBATCH -e image_run_%j.err       # Error output file
+#SBATCH -p gpu-a100-dev           # Queue/partition (A100 GPU development)
+#SBATCH -N 1                      # Number of nodes
+#SBATCH -n 1                      # Number of tasks
+#SBATCH -t 02:00:00               # Maximum runtime (2 hours)
+#SBATCH --mail-type=END,FAIL      # Email notifications
+#SBATCH --mail-user=sadhikari0902@my.msutexas.edu
+#SBATCH -A ASC23018               # Project allocation ID
+
+# -------------------------------------------
+#  Load Required Modules
+# -------------------------------------------
+module load cuda/12.2
+module load hdf5
+
+# -------------------------------------------
+#  Environment Info
+# -------------------------------------------
+echo "-------------------------------------------"
+echo "CUDA CNN Training Job Started"
+echo "Date and Time: $(date)"
+echo "Running on host: $(hostname)"
+echo "Working directory: $(pwd)"
+echo "-------------------------------------------"
+
+# -------------------------------------------
+#  Check and Compile CUDA File
+# -------------------------------------------
+echo "Checking for CUDA source file..."
+ls -l image.cu || { echo "image.cu not found!"; exit 1; }
+
+echo "Compiling CUDA program..."
+nvcc image.cu -o image.out -O2
+if [ ! -f image.out ]; then
+    echo " Compilation failed!"
+    exit 1
+fi
+echo " Compilation successful!"
+ls -lh image.out
+
+# -------------------------------------------
+#  Run the Program on GPU
+# -------------------------------------------
+echo "-------------------------------------------"
+echo "Starting GPU Execution..."
+date
+echo "-------------------------------------------"
+
+./image.out > output_log.txt
+
+echo "-------------------------------------------"
+echo "GPU Execution Finished"
+date
+echo "Output saved in: output_log.txt"
+echo "-------------------------------------------"
+
+# -------------------------------------------
+#  Cleanup and Exit
+# -------------------------------------------
+echo "Job completed successfully!"
+
+```
+
+
+
 # Include iamge.h
 [stb_image.h raw file](https://raw.githubusercontent.com/nothings/stb/master/stb_image.h)
 
