@@ -1,4 +1,4 @@
-# Slum
+# Slurm
 ```txt
 #!/bin/bash
 #SBATCH -J imageCNN               # Job name
